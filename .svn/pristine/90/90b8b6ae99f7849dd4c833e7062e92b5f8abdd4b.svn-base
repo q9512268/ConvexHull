@@ -1,0 +1,60 @@
+package de.feu.propra18.q9512268.app.main;
+
+import java.util.Iterator;
+import java.util.TreeSet;
+
+import de.feu.propra18.q9512268.app.objects.Point;
+import de.feu.propra18.q9512268.app.objects.SimplePoint;
+import javafx.collections.transformation.SortedList;
+
+abstract class ConvexOutlineTemplate {
+
+	protected SortedList<Point> currentPoints;
+
+	protected abstract TreeSet<SimplePoint> createOutline();
+
+	public TreeSet<SimplePoint> getConvexOutline() {
+
+		this.currentPoints = MainFacade.get_Instance().get_PointsSorted();
+
+		if (!currentPoints.isEmpty()) {
+			TreeSet<SimplePoint> outline = createOutline();
+
+			if (outline.size() > 2) {
+				filterOutline(outline);
+			}
+			return outline;
+		}
+
+		throw new NullPointerException("no points available");
+
+	}
+
+	private void filterOutline(TreeSet<SimplePoint> outline) {
+
+		for (Iterator<SimplePoint> iterator = outline.iterator(); iterator.hasNext();) {
+
+			SimplePoint A = (SimplePoint) iterator.next();
+			SimplePoint B = outline.higher(A);
+			SimplePoint C = outline.higher(B);
+
+			if (!(A == null | B == null | C == null)) {
+
+				Curve result = LeftRightTester.getResult(A, B, C);
+
+				switch (result) {
+				case CONVEX:
+					continue;
+				default:
+					outline.remove(B);
+					iterator = outline.iterator();
+					continue;
+				}
+			}
+
+			break;
+
+		}
+
+	}
+}

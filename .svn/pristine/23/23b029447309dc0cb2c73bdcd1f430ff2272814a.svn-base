@@ -1,0 +1,6 @@
+
+/**Contains data structures to store points and functionality to calculate the convex hull; Functionality can be accessed via the {@link MainFacade} instance.
+ * @author Christian Luetticke
+ * @version 1.0
+ */
+package de.feu.propra18.q9512268.app.main;

@@ -1,0 +1,171 @@
+package de.feu.propra18.q9512268.gui.controller;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import de.feu.propra18.q9512268.app.main.MainFacade;
+import de.feu.propra18.q9512268.app.objects.Point;
+import de.feu.propra18.q9512268.app.objects.PointType;
+import javafx.beans.binding.Bindings;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Polygon;
+import javafx.scene.transform.Scale;
+
+/**
+ * Controller class for Main.fxml.
+ * 
+ * @author Christian Luetticke
+ * @version 1.0
+ */
+public class MainController implements Initializable {
+
+	/**
+	 * Reference to the {@link MainFacade} and its functionality.
+	 */
+	private MainFacade FACADE;
+
+	@FXML
+	private MenuController menuController;
+	@FXML
+	private ToolBarController toolBarController;
+
+	@FXML
+	private Pane pane;
+
+	@FXML
+	private Pane pane_points;
+
+	@FXML
+	private ScrollPane scrollpane_points;
+	@FXML
+	private Group group_points;
+	@FXML
+	private Group group_points_outer;
+	@FXML
+	private ScrollPane scrollpane_polygon;
+	@FXML
+	private Pane pane_polygon;
+
+	/**
+	 * Stores information about current drag event. <br/>
+	 * Drag event should only be active directly on {@link Point} instances.
+	 */
+	private boolean dragging = false;
+
+	/**
+	 * The polygon created from the current convex hull points.
+	 */
+	private Polygon polygon;
+
+	/**
+	 * Initializes the components which are present in the markup of Main.fxml.
+	 * <p/>
+	 * Initializes the centered {@link Pane} which holds all points and the polygon
+	 * representing the convex hull.
+	 * <p/>
+	 * Passed the {@link Pane} instance to the {@link ToolBarController} and this
+	 * {@link MainController} instance to {@link MenuController} for further
+	 * processing.
+	 */
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		FACADE = MainFacade.get_Instance();
+
+		initPane();
+		initPolygon();
+		initPoints();
+
+		toolBarController.setPane(pane);
+		menuController.setMainController(this);
+	}
+
+	/**
+	 * Initializes the {@link MainController#pane} instance.
+	 * <p/>
+	 * Sets a new scale to move the origin to the left bottom.
+	 * <p/>
+	 * Adds event handler mainly to add new {@link Point} instances when then user
+	 * clicks in the pane area.
+	 */
+	private void initPane() {
+		Scale scale = new Scale();
+		scale.setX(1);
+		scale.setY(-1);
+		scale.pivotYProperty().bind(pane.heightProperty().divide(2));
+		pane.getTransforms().add(scale);
+
+		pane.addEventHandler(MouseEvent.ANY, (event) -> {
+
+			if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
+				dragging = false;
+			} else if (event.getEventType() == MouseEvent.DRAG_DETECTED) {
+				dragging = true;
+			} else if (event.getEventType() == MouseEvent.MOUSE_DRAGGED) {
+				dragging = true;
+			} else if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
+
+				if (!dragging) {
+					Point newPoint = new Point(event.getX(), event.getY());
+					if (!FACADE.contains_Point(newPoint)) {
+						FACADE.add_Point(newPoint);
+						FACADE.clear_ConvexHullPoints();
+						FACADE.calculate_PointsConvexHull();
+					}
+				}
+			}
+
+		});
+	}
+
+	/**
+	 * Creates a polygon. <br/>
+	 * The points of this polygon are bound to the current convex hull points. <br/>
+	 * The polygon is placed inside a {@link ScrollPane} to optimize resizing of the
+	 * main {@link Scene}.
+	 * 
+	 * @see {@link MainFacade#get_PointsConvexHull()}
+	 */
+	public void initPolygon() {
+		polygon = new Polygon();
+		polygon.setId("polygon");
+		Bindings.bindContent(polygon.getPoints(), FACADE.get_PointsConvexHull());
+		pane_polygon.getChildren().add(polygon);
+		pane_polygon.prefHeightProperty().bind(pane.heightProperty());
+		pane_polygon.toBack();
+		scrollpane_polygon.toBack();
+	}
+
+	/**
+	 * Removes all children of the polygon. <br/>
+	 * Called from inside of {@link MenuController}.
+	 */
+	public void clearPolygon() {
+		pane_polygon.getChildren().clear();
+	}
+
+	/**
+	 * Initializes the pane holding all points. <br/>
+	 * The {@link MainController#pane_points} Pane consists of two groups holding
+	 * the {@link PointType#INNER} and {@link PointType#OUTER} points instances.
+	 * <br/>
+	 * The children of each group are bound to the corresponding observable lists
+	 * inside the {@link de.feu.propra18.q9512268.app.main.PointsContainer}.s
+	 */
+	private void initPoints() {
+
+		pane_points.prefHeightProperty().bind(pane.heightProperty());
+		pane_points.prefWidthProperty().bind(pane.widthProperty());
+
+		Bindings.bindContent(group_points.getChildren(), FACADE.get_PointsAll());
+		Bindings.bindContent(group_points_outer.getChildren(), FACADE.get_PointsAllOuter());
+
+		group_points.toFront();
+	}
+
+}

@@ -1,0 +1,102 @@
+package de.feu.propra18.q9512268.app.main.algorithm.circle;
+
+class Edge {
+
+	Edge previous;
+	Edge next;
+
+	final int ID;
+
+	double startX;
+	double startY;
+	double endX;
+	double endY;
+
+	double inCircleRadius;
+
+	public Edge(int id, double startX, double startY, double endX, double endY) {
+
+		this.ID = id;
+		this.startX = startX;
+		this.startY = startY;
+		this.endX = endX;
+		this.endY = endY;
+
+		// TODO make edges observable
+		// previous.startXProperty().addListener(new ChangeListener<Number>() {
+		// @Override
+		// public void changed(ObservableValue<? extends Number> observable, Number
+		// oldValue, Number newValue) {
+		//
+		// System.out.println("CHANGED");
+		// }
+		// });
+
+	}
+
+	public void calculate_inCircleRadius() {
+
+	}
+
+	public Edge getPrevious() {
+		return previous;
+	}
+
+	public void setPrevious(Edge previous) {
+		this.previous = previous;
+	}
+
+	public Edge getNext() {
+		return next;
+	}
+
+	public void setNext(Edge next) {
+		this.next = next;
+	}
+
+	public Double getInCircleRadius() {
+		return inCircleRadius;
+	}
+
+	public void setInCircleRadius(Double inCircleRadius) {
+		this.inCircleRadius = inCircleRadius;
+	}
+
+	public int getID() {
+		return ID;
+	}
+
+	@Override
+	public String toString() {
+
+		if (previous != null && next != null) {
+			return "(((( " + ID + " )))) " + "previous = " + previous.ID + " [[[[" + startX + "/" + startY + "/" + endX
+					+ "/" + endY + ", r=" + inCircleRadius + "]]]] " + "next = " + next.ID;
+		}
+
+		// if (previous != null && next != null) {
+		// return "(((( " + id + " )))) " + "previous = " + previous.startX + "/" +
+		// previous.startY + "/"
+		// + previous.endX + "/" + previous.endY + " [[[[" + startX + "/" + startY + "/"
+		// + endX + "/" + endY
+		// + ", r=" + inCircleRadius + "]]]] " + "next = " + next.startX + "/" +
+		// next.startY + "/" + + next.endX + "/" + next.endY;
+		// }
+
+		if (previous != null) {
+			return "(((( " + ID + " )))) " + "previous = " + previous.startX + "/" + previous.startY + "/"
+					+ previous.endX + "/" + previous.endY + " [[[[" + startX + "/" + startY + "/" + endX + "/" + endY
+					+ ", r=" + inCircleRadius + "]]]] next = null";
+		} else if (next != null) {
+			return "(((( " + ID + " )))) " + "previous = null " + " [[[[" + startX + "/" + startY + "/" + endX + "/"
+					+ endY + ", r=" + inCircleRadius + "]]]] " + "next = " + next.startX + "/" + next.startY + "/"
+					+ next.endX + "/" + next.endY;
+
+		}
+
+		return "(((( " + ID + " )))) " + "previous = null " + " [[[[" + startX + "/" + startY + "/" + endX + "/" + endY
+				+ ", r=" + inCircleRadius + "]]]] " + "next = null";
+
+	}
+
+}

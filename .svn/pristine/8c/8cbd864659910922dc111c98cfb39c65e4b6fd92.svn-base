@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<ToolBar fx:id="tool_bar" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="de.feu.propra18.q9512268.gui.controller.ToolBarController">
+	<items>
+		<Button fx:id="undo" mnemonicParsing="false" text="&#x21A9;" />
+		<Button fx:id="redo" mnemonicParsing="false" text="&#x21AA;" />
+		<Separator orientation="VERTICAL" />
+		<Button fx:id="create_points_10" mnemonicParsing="false"
+			text="10" />
+		<Button fx:id="create_points_50" mnemonicParsing="false"
+			text="50" />
+		<Button fx:id="create_points_100" mnemonicParsing="false"
+			text="100" />
+		<Button fx:id="create_points_500" mnemonicParsing="false"
+			text="500" />
+		<Button fx:id="create_points_1000" mnemonicParsing="false"
+			text="1000" />
+	</items>
+</ToolBar>

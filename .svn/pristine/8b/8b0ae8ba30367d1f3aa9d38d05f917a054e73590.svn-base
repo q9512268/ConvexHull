@@ -1,0 +1,7 @@
+package de.feu.propra18.q9512268.app.main;
+
+enum Curve {
+
+	CONVEX, CONCAVE, COLLINEAR;
+
+}

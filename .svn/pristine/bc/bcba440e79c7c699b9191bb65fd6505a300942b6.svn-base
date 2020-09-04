@@ -1,0 +1,16 @@
+package de.feu.propra18.q9512268.app.objects;
+
+/**
+ * Two different types of points.
+ * INNER refers to points which are visible to the user.
+ * OUTER refers to points which act as a wider radius around INNER points 
+ * (allow mouse events close to INNER points).
+ * 
+ * @author Christian Luetticke
+ * @version 1.0
+ * @see Point
+ * @see de.feu.propra18.q9512268.app.main.PointsContainer
+ */
+public enum PointType {
+	INNER, OUTER;
+}

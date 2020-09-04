@@ -1,0 +1,41 @@
+package de.feu.propra18.q9512268.app.io;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+
+import de.feu.propra18.q9512268.app.objects.Point;
+
+final class FileOutput {
+
+	private FileOutput() {
+		
+	}
+	
+	protected static void save_as_PointsToFile(String fileName, List<Point> points) {
+
+		try (final FileWriter writer = new FileWriter(fileName)) {
+			for (Point point : points) {
+				writer.write(point.toString());
+				writer.write(System.lineSeparator());
+			}
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	protected static void save_PointsToFile(String fileName, List<Point> points) {
+
+		try (final FileWriter writer = new FileWriter(fileName)) {
+			for (Point point : points) {
+				writer.write(point.toString());
+				writer.write(System.lineSeparator());
+			}
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

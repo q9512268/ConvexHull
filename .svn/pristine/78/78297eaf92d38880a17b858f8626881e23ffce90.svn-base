@@ -1,0 +1,46 @@
+package de.feu.propra18.q9512268.app.io;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+
+import de.feu.propra18.q9512268.app.main.MainFacade;
+import de.feu.propra18.q9512268.app.objects.Point;
+
+/**
+ * Final class that provides function to export points to a file.
+ * <P>Can only be accessed in a static way via the {@link IOFacade} class.
+ * @author Christian Luetticke
+ * @version 1.0
+ */
+final class FileOutput {
+
+	/**
+	 * Private constructor to make sure class is only accessed in a static way.
+	 */
+	private FileOutput() {
+		
+	}
+	
+	/**
+	 * Exports all current points to a file. 
+	 * <P>Each {@link Point} will we exported as "X Y" (X and Y referring to its coordinates).
+	 * @param fileName Name of the file to export to.
+	 * @param points Current list of points.
+	 * @see IOFacade#save_PointsToFile(String, List)
+	 * @see MainFacade#save_PointsToFile(String)
+	 */
+	protected static void save_PointsToFile(String fileName, List<Point> points) {
+
+		try (final FileWriter writer = new FileWriter(fileName)) {
+			for (Point point : points) {
+				writer.write(point.toString());
+				writer.write(System.lineSeparator());
+			}
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

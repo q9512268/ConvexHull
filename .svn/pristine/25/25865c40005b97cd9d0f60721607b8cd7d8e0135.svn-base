@@ -1,0 +1,50 @@
+package de.feu.propra18.q9512268.app.main.container;
+
+import de.feu.propra18.q9512268.app.objects.SimpleCircle;
+
+//TODO
+class CircleContainer {
+
+	// TODO
+	private static final CircleContainer INSTANCE = new CircleContainer();
+
+	// TODO
+	private SimpleCircle gek;
+
+	// TODO
+	private CircleContainer() {
+		gek = new SimpleCircle();
+	}
+
+	// TODO
+	static CircleContainer get_Instance() {
+		return INSTANCE;
+	}
+
+	// TODO
+	SimpleCircle get_GEK() {
+		return gek;
+	}
+
+	// TODO
+	void setGEK_X(Double d) {
+		gek.setX(d);
+	}
+
+	// TODO
+	void setGEK_Y(Double d) {
+		gek.setY(d);
+	}
+
+	// TODO
+	void setGEK_Radius(Double d) {
+		gek.setRadius(d);
+	}
+
+	// TODO
+	public void remove_GEK() {
+		gek.clear();
+	}
+
+
+}

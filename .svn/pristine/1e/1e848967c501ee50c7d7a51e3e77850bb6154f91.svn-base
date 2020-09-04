@@ -1,0 +1,12 @@
+package de.feu.propra18.q9512268.app.main;
+
+/**
+ * Three different types of curve results.
+ * 
+ * @author Christian Luetticke
+ * @version 1.0
+ * @see LeftRightTester
+ */
+enum Curve {
+	CONVEX, CONCAVE, COLLINEAR;
+}

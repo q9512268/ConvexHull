@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<!-- Simple HTML page which serves as a user manual.--> 
+   <head>
+      <meta charset="utf-8" />
+      <title></title>
+      <meta content="Bedienungsanleitung" name="description" />
+      <meta content="Luetticke" name="author" />
+      <style type="text/css"> 
+     
+      table
+      { 
+      background-color: #FFFFFF; 
+      border-collapse: collapse; 
+      border-width: 2px; 
+      border-color: #949390; 
+      border-style: solid; 
+      color: #000000; 
+      font-size: 18px;
+      } 
+      
+      td, th 
+      { 
+      vertical-align: top; 
+      border-width: 2px; 
+      border-color: #949390; 
+      border-style: solid; 
+      padding: 3px; 
+      } 
+      
+      thead 
+      { 
+      background-color: #b0afa9; 
+      }
+      
+      .left
+      {
+      font-weight: bold;
+      width: 20%;      
+      }
+      </style>
+   </head>
+   <body>
+      <table border="1" cellpadding="2">
+         <thead>
+            <tr>
+               <th colspan="2">
+                  <h3>Bedienungsanleitung Calculator18</h3>
+               </th>
+            </tr>
+            <tr>
+               <th colspan="2">Teil 1: Erzeugen einer konvexen H&uuml;lle</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td class="left">Men&uuml;leiste</td>
+               <td>
+                  &Uuml;ber die Men&uuml;leiste stehen folgenden Funktionen zur Verf&uuml;gung:
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td colspan="2"><b>Datei</b></td>
+                        </tr>
+                        <tr>
+                           <td>Neu</td>
+                           <td>Leert die Zeichenfl&auml;che vollst&auml;ndig.</td>
+                        </tr>
+                        <tr>
+                           <td>&Ouml;ffnen</td>
+                           <td>&Ouml;ffnet den Dateiauswahldialog. Hier&uuml;ber k&ouml;nnen bereits abgespeicherte Punktmengen aus einer Datei geladen werden. Dabei wird die Zeichenfl&auml;che komplett geleert, die Punkte der ausgew&auml;hlten Datei werden angezeigt.</td>
+                        </tr>
+                        <tr>
+                           <td>Speichern</td>
+                           <td>Wurde die aktuelle Punktmenge bereits einmal durch &quot;Speichern unter...&quot; gesichert, kann der neuste Stand hier direkt gespeichert werden.</td>
+                        </tr>
+                        <tr>
+                           <td>Speichern unter</td>
+                           <td>Hier&uuml;ber kann die aktuelle Punktmenge in eine Datei exportiert werden.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  &nbsp;
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td colspan="2"><b>Hilfe</b></td>
+                        </tr>
+                        <tr>
+                           <td>Anleitung</td>
+                           <td>Aufruf dieser Bedienungsanleitung.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </td>
+            </tr>
+            <tr>
+               <td class="left">Toolbar</td>
+               <td>
+               <table>
+                     <tbody>
+                        <tr>
+                           <td>Undo &#x21A9; <br/>Redo &#x21AA; </td>
+                           <td>Mit Hilfe von Undo &#x21A9; kann die letzte Aktion r&uuml;ckgängig gemacht werden. 
+                           <p>&Uuml;ber Redo &#x21AA; kann die zuletzt zur&uuml;ckgenommene Aktion wiederholt werden. </td>
+                        </tr>
+                        <tr>
+                           <td>Zufallspunkte</td>
+                           <td> &Uuml;ber die Toolbar k&ouml;nnen Zufallspunkte erzeugt werden.
+			                  Es sind 10, 50, 100, 500 oder 1000 zuf&auml;llige Punkte m&ouml;glich.
+			                  Die gew&uuml;nschten Punkte werden jeweils im sichtbaren Bereich der Zeichenfl&auml;che erzeugt.
+			                  Die konvexe H&uuml;lle wird nach Hinzuf&uuml;gen der Zufallspunkte automatisch angezeigt.
+			                  Die neuen Punkte k&ouml;nnen gel&ouml;scht und verschoben werden.</td>
+                        </tr>                      
+                     </tbody>
+                  </table>              
+               </td>
+            </tr>
+            <tr>
+               <td class="left">Zeichenfl&auml;che</td>
+               <td>Im Rahmen der sichtbaren Zeichenfl&auml;che k&ouml;nnen Punkte erzeugt, gel&ouml;scht oder verschoben werden. Der Ursprung der Zeichenfl&auml;che (Punkt 0/0) befindet sich in der linken unteren Ecke. Die Zeichenfl&auml;che kann vergr&ouml;&szlig;ert und verkleinert werden, Punkte können verschoben werden, jedoch sind die aktuellen Punkte sowie deren H&uuml;lle immer im Bezug zum linken unteren Rand verankert. Die Zeichenfl&auml;che kann so weit verkleinert werden, dass Punkte nicht mehr sichtbar sind. Eine Scrollfunktion bietet die Zeichenfl&auml;che nicht.</td>
+            </tr>
+            <tr>
+              <td class="left">Punkte hinzuf&uuml;gen</td>
+               <td>Durch Klick auf die linke Maustaste k&ouml;nnen Punkte im sichtbaren Bereich der Zeichenfl&auml;che hinzugef&uuml;gt werden.</td>
+            </tr>
+            <tr>
+               <td class="left">Punkte selektieren</td>
+               <td>Bevor ein Punkt gel&ouml;scht oder verschoben werden kann, muss dieser zun&auml;chst selektiert werden. Hierf&uuml;r gen&uuml;gt es sich einem Punkt zu n&auml;hern oder direkt mit der Maus auf einen Punkt zu zeigen. Selektierte Punkte leuchten gr&uuml;n auf. N&auml;hert man sich einer Menge von nah beeinanderliegenden Punkten, haben die zuletzt erzeugten Punkte bei der Selektion Vorrang. Punkte k&ouml;nnen aber jederzeit gezielt selektiert werden, indem man mit der Maus direkt auf einen Punkt zeigt.</td>
+            </tr>
+            <tr>
+               <td class="left">Punkte l&ouml;schen</td>
+               <td>Um einen Punkt zu l&ouml;schen, muss der gew&uuml;nschte Punkte zun&auml;chst selektiert werden (direkt oder durch N&auml;he), danach gen&uuml;gt ein rechter Mausklick und der Punkt verschwindet. Die konvexe H&uuml;lle wird neu berechnet.</td>
+            </tr>
+            <tr>
+               <td class="left">Punkte verschieben</td>
+               <td>Um einen Punkt zu verschieben, muss der gew&uuml;nschte Punkte zun&auml;chst selektiert werden (direkt oder durch N&auml;he), danach kann der Punkt durch Gedr&uuml;ckthalten der linken Maustaste verschoben werden. Verschieben ist nur innerhalb des sichtbaren Bereichs der Zeichenfl&auml;che m&ouml;glich. Soll ein Punkt an eine Stelle au&szlig;erhalb der sichtbaren Zeichenfl&auml;che verschoben werden, muss die gesamte Zeichenfl&auml;che zun&auml;chst vergr&ouml;&szlig;ert werden.</td>
+            </tr>
+         </tbody>
+      </table>
+   </body>
+</html>
+

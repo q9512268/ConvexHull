@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="border_pane" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<top>
+		<VBox>
+			<children>
+				<fx:include fx:id="menu" source="MenuBar.fxml" />
+				<fx:include fx:id="toolBar" source="ToolBar.fxml" />
+			</children>
+		</VBox>
+	</top>
+	<center>
+		<Pane fx:id="pane">
+			<children>
+            <ScrollPane fx:id="scrollpane_points">
+               <content>
+      				<Pane fx:id="pane_points">
+      					<children>
+      						<Group fx:id="group_points" />
+      						<Group fx:id="group_points_outer" />
+      					</children>
+      				</Pane>
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="scrollpane_polygon">
+               <content>
+      				<Pane fx:id="pane_polygon" />
+               </content>
+            </ScrollPane>
+			</children>
+			<BorderPane.margin>
+				<Insets top="20.0" />
+			</BorderPane.margin>
+		</Pane>
+	</center>
+
+</BorderPane>

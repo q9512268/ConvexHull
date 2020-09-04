@@ -1,0 +1,75 @@
+package de.feu.propra18.q9512268.main;
+
+import java.io.IOException;
+
+import de.feu.propra18.interfaces.IHullCalculator;
+import de.feu.propra18.q9512268.app.main.MainFacade;
+import de.feu.propra18.q9512268.app.objects.Point;
+import de.feu.propra18.q9512268.gui.util.Properties;
+
+/**
+ * Implementation of {@link IHullCalculator}.
+ * Mainly delegates method calls to corresponding methods in the {@link MainFacade}.
+ * @author Christian Luetticke
+ * @version 1.0
+ */
+public class HullCalculatorImpl implements IHullCalculator {
+
+	@Override
+	public void addPoint(int x, int y) {
+		MainFacade.get_Instance().add_Point(new Point(x,y));
+	}
+
+	@Override
+	public void addPointsFromArray(int[][] pointArray) {
+		MainFacade.get_Instance().add_PointsFromArray(pointArray);
+	}
+
+	@Override
+	public void addPointsFromFile(String fileName) throws IOException {
+		MainFacade.get_Instance().add_PointsFromFile(fileName);
+	}
+
+	@Override
+	public void clear() {
+		MainFacade.get_Instance().clear_Container();
+	}
+
+	@Override
+	public int[][] getConvexHull() {
+		MainFacade.get_Instance().calculate_PointsConvexHull();
+		MainFacade.get_Instance().calculate_GEK();
+		return MainFacade.get_Instance().get_PointsConvexHull_asArray();
+	}
+
+	@Override
+	public String getEmail() {
+		return Properties.getString("EMAIL");
+	}
+
+	@Override
+	public String getMatrNr() {
+		return Properties.getString("MATR_NR");
+	}
+
+	@Override
+	public String getName() {
+		return Properties.getString("NAME");
+	}
+
+	@Override
+	public double getGEKCenterX() {
+		return MainFacade.get_Instance().get_GEK().getX().doubleValue();
+	}
+
+	@Override
+	public double getGEKCenterY() {
+		return MainFacade.get_Instance().get_GEK().getY().doubleValue();
+	}
+
+	@Override
+	public double getGEKRadius() {
+		return MainFacade.get_Instance().get_GEK().getRadius().doubleValue();
+	}
+
+}

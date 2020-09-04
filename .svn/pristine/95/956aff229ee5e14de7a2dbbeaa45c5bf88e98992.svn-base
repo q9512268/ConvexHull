@@ -1,0 +1,155 @@
+package de.feu.propra18.q9512268.app.objects;
+
+import java.util.Objects;
+
+import de.feu.propra18.q9512268.app.main.MainFacade;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+
+/**
+ * Class representing a point object. <br/>
+ * Extending {@link Circle}.
+ * 
+ * @author Christian Luetticke
+ * @version 1.0
+ */
+public class Point extends Circle {
+
+	/**
+	 * Every point instance has a sibling on form of an {@link PointType#INNER} or
+	 * {@link PointType#OUTER} type. <br/>
+	 * The siblings are both displayed on the canvas - even though OUTER instances
+	 * are not visible.
+	 */
+	private Point sibling;
+	/**
+	 * The {@link PointType} of the point instance.
+	 */
+	private PointType type;
+	/**
+	 * The initial x coordinate at which the point instance was created via click on
+	 * the frontend side.
+	 * <p/>
+	 * Necessary to create a constant {@link Point#hashCode()} of the point
+	 * instance.
+	 */
+	private final double initial_x;
+	/**
+	 * The initial y coordinate at which the point instance was created via click on
+	 * the frontend side.
+	 * <p/>
+	 * Necessary to create a constant {@link Point#hashCode()} of the point
+	 * instance.
+	 */
+	private final double initial_y;
+	/**
+	 * A reference to the {@link MainFacade} singleton instance.
+	 */
+	private MainFacade FACADE;
+
+	/**
+	 * The radius of points of type {@link PointType#INNER}.
+	 */
+	private final static int INNER_RADIUS = 6;
+	/**
+	 * The color of points of type {@link PointType#INNER}.
+	 */
+	private final static Color INNER_COLOR = Color.BLACK;
+	/**
+	 * The radius of points of type {@link PointType#OUTER}.
+	 */
+	private final static int OUTER_RADIUS = 35;
+	/**
+	 * The color of points of type {@link PointType#OUTER}.
+	 * <p/>
+	 * Set to transparent because OUTER points only serve as a additional construct
+	 * to catch mouse events close to INNER points.
+	 */
+	private final static Color OUTER_COLOR = Color.TRANSPARENT;
+	/**
+	 * The color which is shown as soon as a point is selected via a mouse event.
+	 */
+	private final static Color ACTIVE_COLOR = Color.web("#99cc8c");
+
+	public Point(double centerX, double centerY) {
+		super(centerX, centerY, INNER_RADIUS, INNER_COLOR);
+		this.type = PointType.INNER;
+		this.FACADE = MainFacade.get_Instance();
+
+		this.initial_x = centerX;
+		this.initial_y = centerY;
+		initPoint(this);
+		this.sibling = new Point(this);
+	}
+
+	public Point(Point p) {
+		super(p.getCenterX(), p.getCenterY(), OUTER_RADIUS, OUTER_COLOR);
+		this.sibling = p;
+		this.type = PointType.OUTER;
+		this.FACADE = MainFacade.get_Instance();
+
+		this.initial_x = p.getCenterX();
+		this.initial_y = p.getCenterY();
+		initPoint(this.sibling);
+	}
+
+	protected void initPoint(Point p) {
+		this.addEventHandler(MouseEvent.MOUSE_ENTERED, (event) -> p.setFill(ACTIVE_COLOR));
+		this.addEventHandler(MouseEvent.MOUSE_EXITED, (event) -> p.setFill(INNER_COLOR));
+		this.addEventHandler(MouseEvent.MOUSE_RELEASED, (event) -> p.setFill(INNER_COLOR));
+		this.addEventHandler(MouseEvent.MOUSE_DRAGGED, new PointDragHandler());
+		this.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
+			if (event.getButton().equals(MouseButton.SECONDARY)) {
+				FACADE.remove_Point(this);
+				FACADE.clear_ConvexHullPoints();
+				FACADE.calculate_PointsConvexHull();
+				event.consume();
+			}
+		});
+	}
+
+	public Point getSibling() {
+		return sibling;
+	}
+
+	public int getX() {
+		return (int) getCenterX();
+	}
+
+	public int getY() {
+		return (int) getCenterY();
+	}
+
+	public PointType getType() {
+		return type;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(initial_x, initial_y);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Point other = (Point) obj;
+		if (getX() != other.getX())
+			return false;
+		if (getY() != other.getY())
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return getX() + " " + getY();
+	}
+
+}

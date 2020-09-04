@@ -1,0 +1,61 @@
+package de.feu.propra18.q9512268.gui.controller;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import de.feu.propra18.q9512268.app.main.MainFacade;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ToolBar;
+import javafx.scene.layout.Pane;
+
+public class ToolBarController implements Initializable {
+
+	private MainFacade FACADE;
+
+	private Pane pane;
+
+	@FXML
+	private ToolBar tool_bar;
+
+	@FXML
+	private Button undo;
+	@FXML
+	private Button redo;
+
+	@FXML
+	private Button create_points_10;
+	@FXML
+	private Button create_points_50;
+	@FXML
+	private Button create_points_100;
+	@FXML
+	private Button create_points_500;
+	@FXML
+	private Button create_points_1000;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		FACADE = MainFacade.get_Instance();
+
+		create_points_10.setOnAction((e) -> createRandomButtonAction(10));
+		create_points_100.setOnAction((e) -> createRandomButtonAction(100));
+		create_points_1000.setOnAction((e) -> createRandomButtonAction(1000));
+		create_points_50.setOnAction((e) -> createRandomButtonAction(50));
+		create_points_500.setOnAction((e) -> createRandomButtonAction(500));
+
+	}
+
+	private void createRandomButtonAction(int amount) {
+		FACADE.add_PointsRandom(amount, pane.getWidth(), pane.getHeight());
+		FACADE.clear_ConvexHullPoints();
+		FACADE.calculate_PointsConvexHull();
+	}
+
+	public void setPane(Pane pane) {
+		this.pane = pane;
+	}
+
+}

@@ -1,0 +1,171 @@
+<!doctype html>
+
+
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title></title>
+  <meta name="description" content="Bedienungsanleitung">
+  <meta name="author" content="Luetticke"> 
+  
+  <style>
+table{
+ 
+  background-color: #FFFFFF;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #949390;
+  border-style: solid;
+  color: #000000;
+}
+
+
+
+td, th {
+  border-width: 2px;
+  border-color: #949390;
+  border-style: solid;
+  padding: 3px;
+}
+
+thead {
+  background-color: #b0afa9;
+}
+</style>
+  
+ </head> 
+
+<body>
+
+<table border="1" cellpadding="2">
+<thead>
+<tr>
+<th colspan="2">Bedienungsanleitung Calculator18
+</tr>
+<tr>
+<th colspan="2">Teil 1: Erzeugen einer konvexen Hülle
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Allgemeine Informationen zum Hauptfenster</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>Menüleiste</td>
+<td>
+
+
+Über die Menüleiste stehen folgenden Funktionen zur Verfügung:
+<table>
+<tbody>
+<tr>
+<td colspan="2">Datei</td>
+</tr>
+<tr>
+<td>Neu</td>
+<td>Leert die Zeichenfläche vollständig.</td>
+</tr>
+<tr>
+<td>Öffnen</td>
+<td>Öffnet den Dateiauswahldialog. Hierüber können bereits abgespeicherte Punktemengen als Datei geladen werden.
+Dabei wird die Zeichenfläche komplett geleert, die Punkte der ausgewählten Datei werden angezeigt.
+</td>
+</tr>
+<tr>
+<td>Speichern</td>
+<td>Wurde die aktuelle Punktmenge bereits einmal durch "Speichern unter..." gespeichert,
+kann der neue Stand hier direkt gespeichert werden.</td>
+</tr>
+<tr>
+<td>Speichern unter</td>
+<td>Hierüber kann die aktuelle Punktmenge in einer Datei gespeichert werden.</td>
+</tr>
+</tbody>
+</table>
+
+<br/>
+
+<table>
+<tbody>
+<tr>
+<td colspan="2">Hilfe</td>
+</tr>
+<tr>
+<td>Anleitung</td>
+<td>Aufruf dieser Bedienungsanleitung.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+<tr>
+<td>Toolbar</td>
+<td>
+
+Über die Toolbar können Zufallspunkte erzeugt werden. 
+</br>Es sind 10, 50, 100, 500 oder 1000 zufällige Punkte möglich.
+</br>Die gewünschten Punkte werden jeweils im sichtbaren Bereich der Zeichenfläche erzeugt.
+</br>Die konvexe Hülle wird nach Hinzufügen der Zufallspunkte automatisch angezeigt.
+</br>Die neuen Punkte können gelöscht und verschoben werden.
+
+
+
+
+</td>
+</tr>
+<tr>
+<td>Zeichenfläche</td>
+<td>Die Zeichenfläche </td>
+</tr>
+<tr>
+<td>Punkte hinzufügen</td>
+<td>Durch Klick auf die linke Maustaste können Punkte im sichtbaren Bereich der Zeichenfläche hinzugefügt werden.</td>
+</tr>
+<tr>
+<td>Punkte selektieren</td>
+<td>Bevor ein Punkt gelöscht oder verschoben werden kann, muss dieser zunächst selektiert werden.
+Hierfür genügt es sich einem Punkt zu nähern oder direkt mit der Maus auf einen Punkt zu zeigen.
+Selektierte Punkte leuchten grün auf.
+Nähert man sich einer Menge von nah beeinanderliegenden Punkten, haben die zuletzt eingefügten Punkte bei der Selektion Vorrang. 
+Punkte können aber jederzeit gezielt selektiert werden, indem man mit der Maus direkt auf einen Punkt zeigt.</td>
+</tr>
+<tr>
+<td>Punkte löschen</td>
+<td>Um einen Punkt zu löschen, muss der gewünschte Punkte zunächst selektiert werden (direkt oder durch Nähe), 
+danach genügt ein rechter Mausklick und der Punkt verschwindet.
+Die konvexe Hülle wird neu berechnet.</td>
+</tr>
+<tr>
+<td>Punkte verschieben</td>
+<td>Um einen Punkt zu verschieben, muss der gewünschte Punkte zunächst selektiert werden (direkt oder durch Nähe),
+danach kann der Punkt durch Gedrückthalten der linken Maustaste verschoben werden.
+Verschieben ist nur innerhalb des sichtbaren Bereichs der Zeichenfläche möglich.
+Soll ein Punkt an eine Stelle außerhalb der sichtbaren Zeichenfläche verschoben werden,
+muss die gesamte Zeichenfläche zunächst vergrößert werden.</td>
+</tr>
+<tr>
+<td></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+</html>

@@ -1,0 +1,149 @@
+package de.feu.propra18.q9512268.app.objects;
+
+import java.util.List;
+import java.util.Objects;
+
+import de.feu.propra18.q9512268.app.main.algorithm.circle.InnerCircleCalculator;
+
+//TODO
+public class Edge {
+
+	//TODO
+	private Edge previous;
+	//TODO
+	private Edge next;
+	//TODO
+	private final int ID;
+	//TODO
+	private double startX;
+	//TODO
+	private double startY;
+	//TODO
+	private double endX;
+	//TODO
+	private double endY;
+	//TODO
+	private SimpleCircle inkreis;
+	
+	//TODO
+	public Edge(int id, double startX, double startY, double endX, double endY) {
+
+		this.ID = id;
+		this.startX = startX;
+		this.startY = startY;
+		this.endX = endX;
+		this.endY = endY;
+
+		inkreis = new SimpleCircle();
+	}
+
+	//TODO
+	public Edge getPrevious() {
+		return previous;
+	}
+
+	//TODO
+	public void setPrevious(Edge previous) {
+		this.previous = previous;
+		update_inkreis();
+	}
+
+	//TODO
+	public Edge getNext() {
+		return next;
+	}
+
+	//TODO
+	public void setNext(Edge next) {
+		this.next = next;
+		update_inkreis();
+	}
+
+	//TODO
+	public SimpleCircle getInkreis() {
+		return inkreis;
+	}
+
+	//TODO
+	private void update_inkreis() {
+		List<Double> circleInfo = InnerCircleCalculator.calculate_inkreis(this);
+		if(!circleInfo.isEmpty()) {
+			this.inkreis.setX(circleInfo.get(0));
+			this.inkreis.setY(circleInfo.get(1));
+			this.inkreis.setRadius(circleInfo.get(2));
+		}
+	}
+
+	//TODO
+	public int getID() {
+		return ID;
+	}
+
+	//TODO
+	public double getStartX() {
+		return startX;
+	}
+
+	//TODO
+	public void setStartX(double startX) {
+		this.startX = startX;
+	}
+
+	//TODO
+	public double getStartY() {
+		return startY;
+	}
+
+	//TODO
+	public void setStartY(double startY) {
+		this.startY = startY;
+	}
+
+	//TODO
+	public double getEndX() {
+		return endX;
+	}
+
+	//TODO
+	public void setEndX(double endX) {
+		this.endX = endX;
+	}
+
+	//TODO
+	public double getEndY() {
+		return endY;
+	}
+
+	//TODO
+	public void setEndY(double endY) {
+		this.endY = endY;
+	}
+	
+	//TODO
+	@Override
+	public int hashCode() {
+		return Objects.hash(startX, startY, endX, endY);
+	}
+
+	//TODO
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Edge other = (Edge) obj;
+		if (getStartX() != other.getStartX())
+			return false;
+		if (getStartY() != other.getStartY())
+			return false;
+		if (getEndX() != other.getEndX())
+			return false;
+		if (getEndY() != other.getEndY())
+			return false;
+		return true;
+	}
+
+}

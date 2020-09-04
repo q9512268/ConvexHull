@@ -1,0 +1,5 @@
+/**Contains data objects representing points (for displaying on front-end and calculation).
+ * @author Christian Luetticke
+ * @version 1.0
+ */
+package de.feu.propra18.q9512268.app.objects;

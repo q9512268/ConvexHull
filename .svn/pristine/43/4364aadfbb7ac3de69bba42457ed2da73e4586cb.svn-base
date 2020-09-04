@@ -1,0 +1,35 @@
+package de.feu.propra18.q9512268.app.io;
+
+import de.feu.propra18.q9512268.app.main.MainFacade;
+
+/**
+ * Final class that provides function to read a 2D array
+ * and add new {@link Point} instances to the {@link PointsContainer}.
+ * <p/>Can only be accessed in a static way from the {@link IOFacade} class.
+ * @author Christian Luetticke
+ * @version 1.0
+ */
+final class ArrayInput {
+
+	/**
+	 * Private constructor to make sure class is only accessed in a static way.
+	 */
+	private ArrayInput() {
+	}
+
+	/**
+	 * Sole method that loops through a 2D int array of point coordinates.
+	 * <p/>Passes the coordinates to the {@link MainFacade#add_Point(int, int)} to add a new
+	 * {@link Point} to the {@link PointsContainer}.
+	 * @param pointArray 2D array of x/y coordinates.
+	 * @see IOFacade#add_PointsFromArray(int[][])
+	 * @see MainFacade#add_Point(int, int)
+	 */
+	protected static void add_PointsFromArray(int[][] pointArray) {
+		for (int i = 0; i < pointArray.length; i++) {
+			int[] row = pointArray[i];
+			MainFacade.get_Instance().add_Point(row[0], row[1]);
+		}
+	}
+
+}
