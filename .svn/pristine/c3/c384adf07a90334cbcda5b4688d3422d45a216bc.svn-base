@@ -1,9 +1,0 @@
-
-/**Contains data structures to store points and functionality to calculate the convex hull and largest included circle; Functionality can be accessed via the {@link MainFacade} instance.
- * @author Christian Luetticke
- * @version 2.0
- * TODO
- */
-package de.feu.propra18.q9512268.app.main;
-
-import de.feu.propra18.q9512268.app.main.container.MainFacade;

@@ -1,7 +1,0 @@
-package de.feu.propra18.q9512268.app.objects;
-
-public enum PointType {
-
-	INNER, OUTER;
-
-}

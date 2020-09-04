@@ -1,6 +1,0 @@
-/**Contains data structures to store points and to keep track of its history (necessary for undo/redo-functionality).
- * @author Christian Luetticke
- * @version 2.0
- * // TODO
- */
-package de.feu.propra18.q9512268.app.main.container;
